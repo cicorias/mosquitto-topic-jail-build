@@ -51,7 +51,6 @@ jobs:
         docker rm plugin
         tar -czvf ./plugin/plugin.tar.gz -C ./plugin mosquitto_topic_jail_all.so mosquitto_pub mosquitto_sub mosquitto
 
-
     # - name: Pull file from Docker build image
     #   run: docker cp <container-name>:/app/mosquitto_topic_jail_all.so
     - name: Create Release
