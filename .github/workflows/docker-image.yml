@@ -19,7 +19,7 @@ jobs:
     - name: version
       run: |
         echo "::set-output name=version::v$(date +%Y%m%d_%H%M%S)"
-        echo "{version2}={v$(date +%Y%m%d_%H%M%S)"}" >> $GITHUB_OUTPUT
+        echo "{version2}={v$(date +%Y%m%d_%H%M%S)}" >> $GITHUB_OUTPUT
       id: version
     - name: Build the Docker image
       run: |
