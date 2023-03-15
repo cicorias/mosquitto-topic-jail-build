@@ -60,5 +60,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./plugin/plugin.tar.gz
-        asset_name: pluplugin.tar.gz
+        asset_name: mosquitto_topic_jail.tar.gz
         asset_content_type: application/octet-stream
