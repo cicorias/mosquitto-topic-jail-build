@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
+#        # docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
+# permissions:
+#   pull-requests: 
 
 jobs:
   build:
@@ -13,4 +17,40 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: 
+        docker build . --file Dockerfile --tag plugin:latest
+        docker create --name plugin plugin
+        mkdir -p ./plugin
+        docker cp plugin:/app/mosquitto_topic_jail_all.so ./plugin/
+        docker rm plugin
+        tar -czvf ./plugin/plugin.tar.gz -C ./plugin .
+
+
+    # - name: Pull file from Docker build image
+    #   run: docker cp <container-name>:/app/mosquitto_topic_jail_all.so
+
+    - name: version
+      run: echo "::set-output name=version::"v$(date +%Y%m%d_%H%M%S)"
+      id: version
+    - name: Create Release
+      uses: actions/create-release@v1
+      id: create_release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: ${{ steps.version.outputs.version }}
+        body: |
+          Release notes for ${{ steps.version.outputs.version }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./plugin
+        asset_name: pluplugin.tar.gz
+        asset_content_type: application/octet-stream
