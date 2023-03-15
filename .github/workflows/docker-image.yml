@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: 
+      run: |
         docker build . --file Dockerfile --tag plugin:latest
         docker create --name plugin plugin
         mkdir -p ./plugin
