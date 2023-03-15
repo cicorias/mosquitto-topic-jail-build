@@ -12,10 +12,28 @@ on:
 #   pull-requests: 
 
 jobs:
+  print-token:
+      permissions: write-all
+      name: print-token
+      environment: dev
+      # needs: pre-pkr
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Check out code
+          uses: actions/checkout@v2
+
+        - name: Get registration token
+          id: getRegToken
+          run: |
+            curl -X POST -H \"Accept: application/vnd.github.v3+json\"  -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/myprofile/myrepo/actions/runners/registration-token
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: version
+      run: echo "::set-output name=version::v$(date +%Y%m%d_%H%M%S)"
+      id: version
     - name: Build the Docker image
       run: |
         docker build . --file Dockerfile --tag plugin:latest
@@ -36,10 +54,6 @@ jobs:
 
     # - name: Pull file from Docker build image
     #   run: docker cp <container-name>:/app/mosquitto_topic_jail_all.so
-
-    - name: version
-      run: echo "::set-output name=version::v$(date +%Y%m%d_%H%M%S)"
-      id: version
     - name: Create Release
       uses: actions/create-release@v1
       id: create_release
