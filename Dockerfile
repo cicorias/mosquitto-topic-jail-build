@@ -72,7 +72,7 @@ COPY --from=build /mosquitto/apps/mosquitto_passwd/mosquitto_passwd  /usr/bin/mo
 COPY --from=build /mosquitto/plugins/mosquitto_topic_jail_all/mosquitto_topic_jail_all.so /app/mosquitto_topic_jail_all.so
 COPY --from=build /mosquitto/plugins/mosquitto_topic_jail_all/test.conf /app/test.conf
 COPY --from=build /mosquitto/plugins/mosquitto_topic_jail_all/test.sh /app/test.sh
-RUN adduser mosquitto
+RUN useradd -ms /bin/bash  mosquitto
 USER mosquitto
 
 CMD ["/bin/bash"]
