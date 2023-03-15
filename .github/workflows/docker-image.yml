@@ -22,8 +22,16 @@ jobs:
         docker create --name plugin plugin
         mkdir -p ./plugin
         docker cp plugin:/app/mosquitto_topic_jail_all.so ./plugin/
+        docker cp plugin:/usr/bin/mosquitto_pub     ./plugin/
+        docker cp plugin:/usr/bin/mosquitto_sub     ./plugin/
+        docker cp plugin:/usr/lib/libmosquitto.so.1 ./plugin/
+        docker cp plugin:/usr/bin/mosquitto         ./plugin/
+        docker cp plugin:/usr/bin/mosquitto_passwd  ./plugin/
+        docker cp plugin:/app/test.conf             ./plugin/
+        docker cp plugin:/app/test.sh               ./plugin/
+
         docker rm plugin
-        tar -czvf ./plugin/plugin.tar.gz -C ./plugin/mosquitto_topic_jail_all.so .
+        tar -czvf ./plugin/plugin.tar.gz -C ./plugin mosquitto_topic_jail_all.so
 
 
     # - name: Pull file from Docker build image
