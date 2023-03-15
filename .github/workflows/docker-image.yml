@@ -31,14 +31,14 @@ jobs:
         docker cp plugin:/app/test.sh               ./plugin/
 
         docker rm plugin
-        tar -czvf ./plugin/plugin.tar.gz -C ./plugin mosquitto_topic_jail_all.so
+        tar -czvf ./plugin/plugin.tar.gz -C ./plugin mosquitto_topic_jail_all.so mosquitto_pub mosquitto_sub mosquitto
 
 
     # - name: Pull file from Docker build image
     #   run: docker cp <container-name>:/app/mosquitto_topic_jail_all.so
 
     - name: version
-      run: echo "::set-output name=version::"v$(date +%Y%m%d_%H%M%S)"
+      run: echo "::set-output name=version::v$(date +%Y%m%d_%H%M%S)"
       id: version
     - name: Create Release
       uses: actions/create-release@v1
