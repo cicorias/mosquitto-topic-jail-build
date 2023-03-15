@@ -67,7 +67,7 @@ WORKDIR /app
 COPY --from=build /mosquitto/client/mosquitto_pub /usr/bin/mosquitto_pub
 COPY --from=build /mosquitto/client/mosquitto_sub /usr/bin/mosquitto_sub
 COPY --from=build /mosquitto/lib/libmosquitto.so.1 /usr/lib/libmosquitto.so.1
-COPY --from=build /mosquitto/src/mosquitto /usr//bin/mosquitto
+COPY --from=build /mosquitto/src/mosquitto /usr/bin/mosquitto
 COPY --from=build /mosquitto/apps/mosquitto_passwd/mosquitto_passwd  /usr/bin/mosquitto_passwd
 COPY --from=build /mosquitto/plugins/mosquitto_topic_jail_all/mosquitto_topic_jail_all.so /app/mosquitto_topic_jail_all.so
 COPY --from=build /mosquitto/plugins/mosquitto_topic_jail_all/test.conf /app/test.conf
