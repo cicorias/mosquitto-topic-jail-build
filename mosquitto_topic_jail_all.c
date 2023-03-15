@@ -330,44 +330,4 @@ int mosquitto_plugin_init(mosquitto_plugin_id_t* identifier, void** user_data, s
 	rc = mosquitto_callback_register(mosq_pid, MOSQ_EVT_UNSUBSCRIBE, callback_unsubscribe, NULL, NULL);
 	return rc;
 }
-
-
-
-
 #pragma GCC pop_options
-
-// switch (ed->access) {
-//     case MOSQ_ACL_SUBSCRIBE:
-//         if (strncmp(ed->topic, subTopic, subLen) == 0) {
-//             return MOSQ_ERR_SUCCESS;
-//         }
-//         break;
-
-//     case MOSQ_ACL_READ: {
-//         new_topic_len = strlen(clientid) + SLASH_Z + subLen + 1;
-//         new_topic = mosquitto_calloc(1, new_topic_len);
-//         if (!new_topic) {
-//             return MOSQ_ERR_NOMEM;
-//         }
-//         snprintf(new_topic, new_topic_len, "%s/%s", clientid, subTopic);
-
-//         if (strncmp(ed->topic, new_topic, new_topic_len - 1) == 0) {
-//             return MOSQ_ERR_SUCCESS;
-//         }
-//         break;
-//     }
-
-//     case MOSQ_ACL_WRITE:
-//         if (strncmp(ed->topic, putTopic, putLen) == 0) {
-//             return MOSQ_ERR_SUCCESS;
-//         }
-
-//         if (strncmp(ed->topic, getTopic, getLen) == 0) {
-//             return MOSQ_ERR_SUCCESS;
-//         }
-//         break;
-
-//     default:
-//         return MOSQ_ERR_ACL_DENIED;
-// }
-

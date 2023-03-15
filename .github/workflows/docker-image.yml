@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
-#        # docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-
-# permissions:
-#   pull-requests: 
 
 jobs:
   build:
@@ -38,8 +34,6 @@ jobs:
         docker rm plugin
         tar -czvf ./plugin/plugin.tar.gz -C ./plugin mosquitto_topic_jail_all.so mosquitto_pub mosquitto_sub mosquitto
 
-    # - name: Pull file from Docker build image
-    #   run: docker cp <container-name>:/app/mosquitto_topic_jail_all.so
     - name: Create Release
       uses: actions/create-release@v1
       id: create_release

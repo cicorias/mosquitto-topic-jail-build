@@ -32,14 +32,9 @@ RUN git clone --depth=1 https://github.com/eclipse/mosquitto.git && \
     cd mosquitto && \
     git remote set-branches origin develop && \
     git fetch --depth 1 origin develop && \
-    #git checkout develop
     git fetch --depth 1 origin 6f574f80ea151a328fd94789c2b336e0bd1fa115 && \
     git checkout 6f574f80ea151a328fd94789c2b336e0bd1fa115
 
-# RUN curl -OL https://github.com/eclipse/mosquitto/archive/refs/tags/v${VERSION}.tar.gz && \
-#     tar -xzf v${VERSION}.tar.gz && \
-#     rm v${VERSION}.tar.gz && \
-#     mv mosquitto-${VERSION} mosquitto
 
 # Compile and install Mosquitto
 WORKDIR /mosquitto
