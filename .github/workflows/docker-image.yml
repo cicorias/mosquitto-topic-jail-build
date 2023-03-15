@@ -23,7 +23,7 @@ jobs:
         mkdir -p ./plugin
         docker cp plugin:/app/mosquitto_topic_jail_all.so ./plugin/
         docker rm plugin
-        tar -czvf ./plugin/plugin.tar.gz -C ./plugin .
+        tar -czvf ./plugin/plugin.tar.gz -C ./plugin/mosquitto_topic_jail_all.so .
 
 
     # - name: Pull file from Docker build image
