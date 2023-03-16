@@ -47,6 +47,16 @@ jobs:
         draft: false
         prerelease: false
 
+    - name: Save PR number
+      env:
+        REL_NUMBER: ${{ steps.version.outputs.version }}
+      run: |
+        mkdir -p ./rel
+        echo $REL_NUMBER > ./rel/rel_number
+    - uses: actions/upload-artifact@v3
+      with:
+        name: rel_number
+        path: rel/
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
       env:
