@@ -48,7 +48,5 @@ jobs:
           tags: |
             ${{ steps.meta.outputs.tags }}
             latest
-            ${{ github.event.release.name }}
           labels: | 
             ${{ steps.meta.outputs.labels }}
-            ${{ github.event.release.name }}
