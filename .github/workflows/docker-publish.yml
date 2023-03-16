@@ -45,7 +45,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            ${{ steps.meta.outputs.tags }}
-            latest
+          tags: cicorias/mosquitto-plugin-topic-jail:latest
           labels: ${{ steps.meta.outputs.labels }}
