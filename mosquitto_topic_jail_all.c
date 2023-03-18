@@ -53,6 +53,7 @@ Contributors:
 #include "mosquitto_plugin.h"
 #include "mosquitto.h"
 #include "mqtt_protocol.h"
+#include "openssl/ssl.h"
 
 #define PLUGIN_NAME "topic-jail-all"
 #define PLUGIN_VERSION "1.0"
@@ -88,6 +89,14 @@ static int callback_message_in(int event, void* event_data, void* userdata)
 		/* will only modify the topic of jailed clients */
 		return MOSQ_ERR_SUCCESS;
 	}
+
+	/** 
+	 * see if need more 
+	 * https://github.com/cicorias/mosquitto/blob/cicorias-topic-jail-plugin/plugins/examples/topic-jail-all/mosquitto_topic_jail_all.c
+	 * 	struct mosquitto* client = mosquitto_client(clientid);
+	 *  X509* client_cert = mosquitto_client_certificate(client);
+	*/
+
 
 	/* put the clientid on front of the topic */
 

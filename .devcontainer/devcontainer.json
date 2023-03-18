@@ -1,0 +1,45 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "Ubuntu",
+	"build": {
+		"dockerfile": "Dockerfile",
+	},
+	// still investigation https://github.com/docker/for-mac/issues/5191#issuecomment-840019347
+	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined", "--privileged" ],
+	"capAdd": ["SYS_PTRACE"],
+	"securityOpt": [ "seccomp=unconfined" ],
+	"privileged": true,
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"features": {
+		// "ghcr.io/devcontainers/features/github-cli:1": {
+		// 	"installDirectlyFromGitHubRelease": true,
+		// 	"version": "latest"
+		// }
+	},
+	"customizations": {
+		// "vscode": {
+		// 	"extensions": [
+		// 		"ms-vscode.cpptools-extension-pack"
+		// 	]
+		// }
+		"vscode": {
+			"settings": {
+				"extensions.verifySignature": false
+			},
+			"extensions": [
+				"ms-vscode.cpptools-extension-pack"
+			]
+		}
+	}
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "uname -a",
+	// Configure tool-specific properties.
+	// "customizations": {},
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}

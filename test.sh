@@ -1,3 +1,3 @@
 #!/bin/sh
 
-mosquitto -c test.conf -v
+./build/_deps/mosquitto-build/src/mosquitto -c test.conf -v
