@@ -10,7 +10,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     curl \
     wget \
     vim \
-    # cmake \
     gnupg \
     linux-headers-generic \
     libcjson-dev \
