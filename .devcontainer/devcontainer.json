@@ -25,6 +25,7 @@
 	"customizations": {
 		"vscode": {
 			"settings": {
+				// an apple silicon with linux/amd64 issue
 				"extensions.verifySignature": false
 			},
 			"extensions": [
