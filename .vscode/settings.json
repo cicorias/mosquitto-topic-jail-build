@@ -1,0 +1,7 @@
+{
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.debugConfig": {
+        "args": ["-c", "test.conf", "-v"],
+        "cwd": "${workspaceFolder}"
+    }
+}
