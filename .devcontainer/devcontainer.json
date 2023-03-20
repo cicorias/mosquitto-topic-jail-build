@@ -5,15 +5,6 @@
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
-	// TODO: on Apple silicon cant debug linux/armd64 container
-	// still investigation https://github.com/docker/for-mac/issues/5191#issuecomment-840019347
-	// perhaps we can remove the --platform switch on the Dockerfile or pass in as an arg
-	// have NOT tested with a arm64 image yet.
-	// "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined", "--privileged" ],
-	// "capAdd": ["SYS_PTRACE"],
-	// "securityOpt": [ "seccomp=unconfined" ],
-	// "privileged": true,
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers/features/github-cli:1": {
