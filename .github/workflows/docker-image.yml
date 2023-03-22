@@ -32,7 +32,8 @@ jobs:
         docker cp plugin:/app/test.sh               ./plugin/
 
         docker rm plugin
-        tar -czvf ./plugin/plugin.tar.gz -C ./plugin mosquitto_topic_jail_all.so mosquitto_pub mosquitto_sub mosquitto
+        tar -czvf ./plugin/plugin.tar.gz -C ./plugin mosquitto_topic_jail_all.so mosquitto_pub mosquitto_sub \
+        libmosquitto.so.1 mosquitto mosquitto_passwd
 
     - name: Create Release
       uses: actions/create-release@v1
