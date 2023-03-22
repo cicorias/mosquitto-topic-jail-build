@@ -32,9 +32,11 @@ jobs:
         docker cp plugin:/app/test.sh               ./plugin/
 
         docker rm plugin
-        tar -czvf ./plugin/plugin.tar.gz -C ./plugin mosquitto_topic_jail_all.so mosquitto_pub mosquitto_sub mosquitto
+        tar -czvf ./plugin/plugin.tar.gz -C ./plugin mosquitto_topic_jail_all.so mosquitto_pub mosquitto_sub \
+        libmosquitto.so.1 mosquitto mosquitto_passwd
 
     - name: Create Release
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
       uses: actions/create-release@v1
       id: create_release
       env:
@@ -48,6 +50,7 @@ jobs:
         prerelease: false
 
     - name: Save PR number
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
       env:
         REL_NUMBER: ${{ steps.version.outputs.version }}
       run: |
@@ -58,6 +61,7 @@ jobs:
         name: rel_number
         path: rel/
     - name: Upload Release Asset
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

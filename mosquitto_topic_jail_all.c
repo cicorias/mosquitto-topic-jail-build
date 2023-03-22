@@ -15,6 +15,14 @@ SPDX-License-Identifier: EPL-2.0 OR BSD-3-Clause
 Contributors:
    Abilio Marques - initial implementation and documentation.
 */
+/**
+ * @file mosquitto_topic_jail.c
+ * @brief plugin which jails clients to a topic
+ * @author Abilio Marques - initial implementation and documentation.
+ * @author Shawn Cicoria - modified to jail all clients to set of topics and other logic
+ * @date 2023-03-22
+ * @version 1.0
+*/
 
 /*
  * jails devices but not admin on different listeners 
